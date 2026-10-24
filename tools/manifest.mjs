@@ -138,6 +138,21 @@ export const RULE_SETS = [
     dir: 'Clash',
     files: ['ProxyGFWlist'],
     why: '国外穿墙兜底（GFWList，上游每 2–4 天自动更新一次）',
+    // 注入项：上游 ProxyGFWlist 不含 PikPak 除 mypikpak.com 之外的域名，且其下载 CDN 在
+    // *.sandai.net 下（与迅雷共用后缀，被 china-domain 判定直连）。用户 2026-10-24 要求
+    // 「PikPak 走代理且域名要加全」，故在生成阶段固定注入，避免被下次同步覆盖。
+    extra: [
+      // 品牌域名兜底：一次覆盖 pikpak.com / mypikpak.com / mypikpak.net / pikpak.me /
+      // pikpak.app / pikpak.org / pikpakapp.com / pikpakdrive.com 及其全部子域
+      'DOMAIN-KEYWORD,pikpak',
+      // 下载 CDN（关键词覆盖不到）：*.sandai.net
+      'DOMAIN-SUFFIX,dlandroid.rcv.sandai.net',
+      'DOMAIN-SUFFIX,hub5idx.v6.shub.sandai.net',
+      'DOMAIN-SUFFIX,hub5pn.wap.sandai.net',
+      'DOMAIN-SUFFIX,hub5pnc.sandai.net',
+      'DOMAIN-SUFFIX,hub5pr.v6.phub.sandai.net',
+      'DOMAIN-SUFFIX,hubciddata.sandai.net',
+    ],
   },
   {
     out: 'proxy-media',

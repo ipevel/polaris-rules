@@ -179,11 +179,24 @@ function mergeLists(setDef, fetched) {
     provenance.push({ source: name, count: rules.length });
   }
 
+  // 注入项：manifest 里声明、上游不提供（或会被上游下次同步覆盖掉）的补丁规则。
+  // 放在去重之前，保证注入项与上游重复时不会出现重复行。
+  let injected = 0;
+  for (const r of setDef.extra || []) {
+    const line = String(r).trim();
+    if (!line) continue;
+    if (UNSUPPORTED_RULE_TYPES.has(ruleType(line))) {
+      throw new Error(`${setDef.out}: manifest.extra 里有内核不支持的规则类型：${line}`);
+    }
+    all.push(line);
+    injected += 1;
+  }
+
   const merged = dedupe(all);
   if (merged.length * 40 > MAX_OUTPUT_BYTES) {
     throw new Error(`${setDef.out} 产出过大（${merged.length} 条）—— 合并逻辑可能写错了`);
   }
-  return { merged, count: merged.length, raw, provenance, dropped };
+  return { merged, count: merged.length, raw, provenance, dropped, injected };
 }
 
 /**
@@ -191,17 +204,20 @@ function mergeLists(setDef, fetched) {
  *   rules/<out>.txt        人看的：带固定表头（TEXT_HEADERS），无逐次变动的内容
  *   dist/rules/<out>.list  内核吃的：只含规则行（# 注释内核会跳过，但我们不给注释）
  */
-function renderRuleSet(setDef, merged, raw, provenance, dropped = 0) {
+function renderRuleSet(setDef, merged, raw, provenance, dropped = 0, injected = 0) {
   const dateNote = provenance.length > 1
     ? `# 合并自 ${provenance.length} 份 ACL4SSR 清单：${provenance.map((p) => p.source).join(' / ')}`
     : `# 来自 ACL4SSR 清单：${provenance[0]?.source || '—'}`;
   const dropNote = dropped
     ? `；丢弃内核不认的 URL-REGEX ${dropped} 条（该类型 mihomo 从不支持，内核本来也会逐条跳过）`
     : '';
+  const injectNote = injected
+    ? `；另按 manifest.extra 注入 ${injected} 条本地补丁规则（上游不提供）`
+    : '';
   const txt = [
     ...(TEXT_HEADERS[setDef.out] || [`# Polaris 分流规则 —— ${setDef.out}`]),
     dateNote,
-    `# 规则数：${merged.length} 条（上游合计 ${raw} 条，去重 ${raw - merged.length} 条${dropNote}）`,
+    `# 规则数：${merged.length} 条（上游合计 ${raw} 条，去重 ${raw - merged.length} 条${dropNote}${injectNote}）`,
     '',
   ].join('\n') + merged.join('\n') + '\n';
 
@@ -324,8 +340,8 @@ async function main() {
       fetched.push({ name: spec.name, text: await http(`${UPSTREAM.acl.rawBase}/${current.acl.sha}/${spec.dir}/${spec.name}.list`) });
     }
 
-    const { merged, count, raw, provenance, dropped } = mergeLists(setDef, fetched);
-    const { txt, list } = renderRuleSet(setDef, merged, raw, provenance, dropped);
+    const { merged, count, raw, provenance, dropped, injected } = mergeLists(setDef, fetched);
+    const { txt, list } = renderRuleSet(setDef, merged, raw, provenance, dropped, injected);
     const sources = provenance.map((p) => `${p.source}.list`);
     staged.push({ path: `rules/${setDef.out}.txt`, buf: Buffer.from(txt), rules: count, raw, sources });
     staged.push({ path: `${DIST_DIR}/rules/${setDef.out}.list`, buf: Buffer.from(list), rules: count, sources, kernel: true });

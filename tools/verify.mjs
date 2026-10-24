@@ -131,6 +131,24 @@ if (!existsSync(latestPath)) {
           ok(`${DIST}/rules/${s.out}.list 生成期断言通过：未出现 ${s.forbid.length} 条被禁条目`);
         }
       }
+
+      /* ---- 9. 生成期断言：manifest 声明的 extra 条目必须出现 ---- */
+      // forbid 的反向断言：上游不提供、由 manifest 注入的补丁规则，必须真的落进产物，
+      // 否则「用户要求的域名」会在某次同步后悄悄消失。
+      if (Array.isArray(s.extra) && s.extra.length) {
+        const present = new Set(ruleLines(raw).map((l) => l.trim().toLowerCase()));
+        const missing = s.extra
+          .map((e) => String(e).trim())
+          .filter((e) => e && !present.has(e.toLowerCase()));
+        if (missing.length) {
+          bad(
+            `${DIST}/rules/${s.out}.list 缺少 ${missing.length} 条 manifest.extra 声明必须存在的规则：` +
+            `${missing.slice(0, 5).join('、')}${missing.length > 5 ? ' …' : ''}`,
+          );
+        } else {
+          ok(`${DIST}/rules/${s.out}.list 生成期断言通过：manifest.extra 的 ${s.extra.length} 条注入规则全部在位`);
+        }
+      }
     }
 
     /* ---- 8b. onedrive 不得重新并入宽口径 Microsoft.list ---- */

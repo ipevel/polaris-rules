@@ -1,7 +1,7 @@
 # Polaris 分流规则 —— 国外穿墙兜底
 # GFWList，ACL4SSR 每 2–4 天自动更新一次。
 # 来自 ACL4SSR 清单：ProxyGFWlist
-# 规则数：6883 条（上游合计 6986 条，去重 103 条）
+# 规则数：6890 条（上游合计 6986 条，去重 96 条；另按 manifest.extra 注入 7 条本地补丁规则（上游不提供））
 DOMAIN-SUFFIX,1password.com
 DOMAIN-SUFFIX,adguard.org
 DOMAIN-SUFFIX,bit.no.com
@@ -6885,3 +6885,10 @@ DOMAIN-SUFFIX,flzbcdn.xyz
 DOMAIN-SUFFIX,ocnttv.com
 DOMAIN-SUFFIX,vikacg.com
 DOMAIN-SUFFIX,picjs.xyz
+DOMAIN-KEYWORD,pikpak
+DOMAIN-SUFFIX,dlandroid.rcv.sandai.net
+DOMAIN-SUFFIX,hub5idx.v6.shub.sandai.net
+DOMAIN-SUFFIX,hub5pn.wap.sandai.net
+DOMAIN-SUFFIX,hub5pnc.sandai.net
+DOMAIN-SUFFIX,hub5pr.v6.phub.sandai.net
+DOMAIN-SUFFIX,hubciddata.sandai.net

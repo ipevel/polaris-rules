@@ -1,17 +1,17 @@
 {
   "schema": 1,
-  "version": 16,
-  "generatedAt": "2026-10-23T19:19:50.540Z",
+  "version": 17,
+  "generatedAt": "2026-10-24T03:40:33.573Z",
   "upstream": {
     "acl": {
       "repo": "ACL4SSR/ACL4SSR",
-      "sha": "ce7ef8f3bd7f372a756584722101c3e94e20eedd",
-      "date": "2026-10-23T17:56:56Z"
+      "sha": "3024bf8b2c9db5bf8807c4595674be8bbc22bd86",
+      "date": "2026-10-24T02:51:21Z"
     },
     "meta": {
       "repo": "MetaCubeX/meta-rules-dat",
       "tag": "latest",
-      "publishedAt": "2026-10-23T00:48:39Z"
+      "publishedAt": "2026-10-24T00:55:34Z"
     }
   },
   "files": [
@@ -23,14 +23,14 @@
     },
     {
       "path": "dist/geo/geoip.metadb",
-      "bytes": 8422018,
-      "sha256": "646d077cc2b43a8abf1b853006f0ac29f03263a1656ba8c247aa621ebcf94c66",
+      "bytes": 8426776,
+      "sha256": "32f2edbb88f54257b07d6aef6144afa143c8f02a23ae0d6137ea3de680ac8846",
       "upstreamAsset": "geoip.metadb"
     },
     {
       "path": "dist/geo/geosite.dat",
-      "bytes": 4305877,
-      "sha256": "56bf88abb2d44144b718a9bace777f27b9146dadd3075950592e1b3326478fa9",
+      "bytes": 4311865,
+      "sha256": "610e2fa2b57b1232ba2220eeea45eb6e0bbf3675e19ac6ee2d29e8eb3e294b10",
       "upstreamAsset": "geosite.dat"
     },
     {
@@ -153,9 +153,9 @@
     },
     {
       "path": "dist/rules/proxy-gfwlist.list",
-      "bytes": 187864,
-      "sha256": "aa02d7d07b95d02d27c77fcc686863e45fa6c3b3e62d659b67601e918631b053",
-      "rules": 6883,
+      "bytes": 188111,
+      "sha256": "137a50dbc2da9e07844dbd94b0cbf78870b119ea65e54b36a6ba36bd40f6f52e",
+      "rules": 6890,
       "sources": [
         "ProxyGFWlist.list"
       ],
@@ -239,14 +239,14 @@
     },
     {
       "path": "geo/geoip.metadb",
-      "bytes": 8422018,
-      "sha256": "646d077cc2b43a8abf1b853006f0ac29f03263a1656ba8c247aa621ebcf94c66",
+      "bytes": 8426776,
+      "sha256": "32f2edbb88f54257b07d6aef6144afa143c8f02a23ae0d6137ea3de680ac8846",
       "upstreamAsset": "geoip.metadb"
     },
     {
       "path": "geo/geosite.dat",
-      "bytes": 4305877,
-      "sha256": "56bf88abb2d44144b718a9bace777f27b9146dadd3075950592e1b3326478fa9",
+      "bytes": 4311865,
+      "sha256": "610e2fa2b57b1232ba2220eeea45eb6e0bbf3675e19ac6ee2d29e8eb3e294b10",
       "upstreamAsset": "geosite.dat"
     },
     {
@@ -351,9 +351,9 @@
     },
     {
       "path": "rules/proxy-gfwlist.txt",
-      "bytes": 188074,
-      "sha256": "4304b377023c54eeddabb312e57da96b0bd3653210c5c27a253c59cb1e4470f9",
-      "rules": 6883,
+      "bytes": 188396,
+      "sha256": "3f9462e3ebca60d5be5053c65666fe120d58c11639d1457ef3732dba8b136010",
+      "rules": 6890,
       "sources": [
         "ProxyGFWlist.list"
       ]

@@ -1,12 +1,12 @@
 # 产出谱系（自动生成，勿手工编辑）
 
-生成时间：2026-10-23T19:19:50.540Z
-版本：VERSION 16
+生成时间：2026-10-24T03:40:33.573Z
+版本：VERSION 17
 
 ## 上游坐标
 
-- 分流清单：`ACL4SSR/ACL4SSR` @ `ce7ef8f3bd7f372a756584722101c3e94e20eedd`（2026-10-23T17:56:56Z）
-- geo 数据库：`MetaCubeX/meta-rules-dat` release `latest`（2026-10-23T00:48:39Z）
+- 分流清单：`ACL4SSR/ACL4SSR` @ `3024bf8b2c9db5bf8807c4595674be8bbc22bd86`（2026-10-24T02:51:21Z）
+- geo 数据库：`MetaCubeX/meta-rules-dat` release `latest`（2026-10-24T00:55:34Z）
 
 ## 两种形态
 
@@ -27,7 +27,7 @@
 | `dist/rules/china-media.list` *(内核形态)* | 91 | ChinaMedia.list, Bilibili.list, NetEaseMusic.list, Download.list |
 | `dist/rules/games.list` *(内核形态)* | 67 | Steam.list, Epic.list, Sony.list, Nintendo.list, Xbox.list, SteamCN.list |
 | `dist/rules/onedrive.list` *(内核形态)* | 17 | OneDrive.list |
-| `dist/rules/proxy-gfwlist.list` *(内核形态)* | 6883 | ProxyGFWlist.list |
+| `dist/rules/proxy-gfwlist.list` *(内核形态)* | 6890 | ProxyGFWlist.list |
 | `dist/rules/proxy-media.list` *(内核形态)* | 356 | ProxyMedia.list |
 | `dist/rules/social.list` *(内核形态)* | 53 | Twitter.list, Instagram.list, Facebook.list, Whatsapp.list |
 | `dist/rules/streaming.list` *(内核形态)* | 174 | YouTube.list, Netflix.list, DisneyPlus.list, HBO.list, Hulu.list, AppleTV.list, BBCiPlayer.list, AbemaTV.list, DAZN.list, Twitch.list, Spotify.list, Amazon.list |
@@ -45,7 +45,7 @@
 | `rules/china-media.txt` | 91 | ChinaMedia.list, Bilibili.list, NetEaseMusic.list, Download.list |
 | `rules/games.txt` | 67 | Steam.list, Epic.list, Sony.list, Nintendo.list, Xbox.list, SteamCN.list |
 | `rules/onedrive.txt` | 17 | OneDrive.list |
-| `rules/proxy-gfwlist.txt` | 6883 | ProxyGFWlist.list |
+| `rules/proxy-gfwlist.txt` | 6890 | ProxyGFWlist.list |
 | `rules/proxy-media.txt` | 356 | ProxyMedia.list |
 | `rules/social.txt` | 53 | Twitter.list, Instagram.list, Facebook.list, Whatsapp.list |
 | `rules/streaming.txt` | 174 | YouTube.list, Netflix.list, DisneyPlus.list, HBO.list, Hulu.list, AppleTV.list, BBCiPlayer.list, AbemaTV.list, DAZN.list, Twitch.list, Spotify.list, Amazon.list |
